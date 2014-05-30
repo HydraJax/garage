@@ -23,13 +23,14 @@ body{
 }
 
 .background {
-    background-image: url(http://howwerollfitness.files.wordpress.com/2012/05/yard_sale_northern_ca_2005.jpg);
+   /* background-image: url(http://howwerollfitness.files.wordpress.com/2012/05/yard_sale_northern_ca_2005.jpg);
     background-repeat:no-repeat;
-    background-size: 100%;
+    background-size: 100%;*/
     /* custom background-position */
     /*background-position:50% 50%;*/
     /* ie8- graceful degradation */
     /*background-position:50% 50% !important;*/
+    background-color: rgb(122,132,152);
     width: 100%;
     height: 100%;
     position: absolute; 
@@ -51,4 +52,47 @@ body{
     padding-top:75px;
     font-size: 60px;
     color: white;
+}
+
+.navbar-inverse{
+    background-color: rgb(54,59,64);
+    border-bottom: 28px solid rgb(93,98,104);
+}
+
+.navbar navbar-inverse navbar-fixed-top{
+    
+}
+
+.navbar-header navbar-right{
+
+}
+
+.navbar-header{
+    
+}
+
+.navbar-brand{
+
+}
+
+.btn btn-lg btn-success{
+
+
+}
+
+.btn{
+    
+    
+}
+.btn-success{
+    background-color: rgb(93,98,104)!important;
+    border-color: rgb(122,132,152)!important;
+}
+
+.btn-success:hover{
+    border-color: rgb(34,38,42);
+}
+
+#landing{
+    border-bottom: solid 55px rgb(153,165,190);
 }
