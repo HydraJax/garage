@@ -1,52 +1,57 @@
-<%= form_for @sale, :multipart => true do |f| %>
-  
-  <div>  
-    <%= f.label :title %>  
-    <%= f.text_field :title, placeholder: "title" %>  
-  </div>  
-  <div>  
-    <%= f.label :address %>  
-    <%= f.text_field :address, placeholder: "address" %>  
-  </div>  
-  <div>  
-    <%= f.label :city %>  
-    <%= f.text_field :city, placeholder: "city" %>  
-  </div>  
-  <div>  
-    <%= f.label :zipcode %>  
-    <%= f.text_field :zipcode, placeholder: "zipcode" %>  
-  </div>  
-  <div>  
-    <%= f.label :description %>  
-    <%= f.text_field :description, placeholder: "description" %>  
-  </div>  
-  <div>  
-    <%= f.label :date %>  
-    <%= f.text_field :date, placeholder: "Date" %>  
-  </div>
-  <div>  
-    <%= f.label :time_start %>  
-    <%= select_tag "sale[start_time]", options_for_select((9..21).map {|item| time = item% 12; item > 11? time = time.to_s + "am": time = time.to_s+ "pm"; [time,item] }) %>
-  </div>
-  <div>  
-    <%= f.label :time_end %>  
-    <%= select_tag "sale[end_time]", options_for_select((9..21).map {|item| time = item% 12; item > 11? time = time.to_s + "am": time = time.to_s+ "pm"; [time,item] }) %>
-  </div>
-    <%= f.file_field :photo %>
-  <div id="items">
-    <div>
-      <%= f.fields_for :items, @sale.items.build do |b| %>
-        <%= b.text_field :name, placeholder: "name" %>
-        <%= b.text_field :description, placeholder: "description" %>
-        <%= b.text_field :price, placeholder: "price" %>
-        <button class="new_sale_item"> Add Item</button>
-        <%= b.file_field :photo %>
-      <% end  %>
-    </div>
-  </div>
+<div class="form_label">
+  <div class="form"><br>
 
-  <%= f.submit "create sale" %> 
-<% end %>
+    <%= form_for @sale, :multipart => true do |f| %>
+      <div> 
+      <h1 class = "form_text">Create Your New Garage Sale Event Below:</h1>      
+        <%= f.text_field :title, placeholder: "Give Your Sale a Title " %>  
+      </div>  
+      <div>  
+         
+        <%= f.text_field :address, placeholder: "Address" %>  
+      </div>  
+      <div>  
+        
+        <%= f.text_field :city, placeholder: "City" %>  
+      </div>  
+      <div>  
+        
+        <%= f.text_field :zipcode, placeholder: "Zipcode" %>  
+      </div>  
+      <div>  
+        
+        <%= f.text_field :description, placeholder: "Description of Sale" %>  
+      </div>  
+      <div>  
+       
+        <%= f.text_field :date, placeholder: "Date" %>  
+      </div>
+      <div>  <p></p>
+        <%= f.label :time_start %>  
+        <%= select_tag "sale[start_time]", options_for_select((9..21).map {|item| time = item% 12; item > 11? time = time.to_s + "am": time = time.to_s+ "pm"; [time,item] }) %>
+      </div>
+      <div>  
+        <%= f.label :time_end %>  
+        <%= select_tag "sale[end_time]", options_for_select((9..21).map {|item| time = item% 12; item > 11? time = time.to_s + "am": time = time.to_s+ "pm"; [time,item] }) %>
+      </div>
+        <%#= f.file_field :photo %>
+      <div id="items">
+        <div><p class="new_item_entry"><h3><STRONG>Enter Your Sale Items Here</STRONG></h3></p>
+          <%= f.fields_for :items, @sale.items.build do |b| %>
+            <%= b.text_field :name, placeholder: "Sale Item Name" %>
+            <%= b.text_field :description, placeholder: "Description" %>
+            <%= b.text_field :price, placeholder: "Price" %>
+            <button class="new_sale_item"> Add Item</button>
+            <p><h3><STRONG>Upload Your Garage Sale Pics Here</STRONG></h3></p>
+            <%= b.file_field :photo%>
+          <% end  %>
+        </div>
+      </div>
+<p><h3><STRONG>Click This Button To Submit Your</STRONG></h3></p>
+      <%= f.submit "create sale" %> 
+    <% end %>
+  </div>
+</div>
 <script type="text/javascript">
     var count = 1;
   $(".new_sale_item").click(function(evt){
@@ -62,7 +67,7 @@
       var file = '<input id="sale_items_attributes_' + count + '_photo" name="sale[items_attributes][' + count + '][photo]" type="file"> ';
 
       whole = "<div>"+ name + describe + price + file +"</div>";
-      $("#items").prepend(whole);
+      $("#items").append(whole);
       
       count++;
       console.log(count);
